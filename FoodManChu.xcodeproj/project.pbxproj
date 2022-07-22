@@ -9,23 +9,45 @@
 /* Begin PBXBuildFile section */
 		AB3AF25D288AD6030007539A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF25C288AD6030007539A /* AppDelegate.swift */; };
 		AB3AF25F288AD6030007539A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF25E288AD6030007539A /* SceneDelegate.swift */; };
-		AB3AF261288AD6030007539A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF260288AD6030007539A /* ViewController.swift */; };
+		AB3AF261288AD6030007539A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF260288AD6030007539A /* HomeViewController.swift */; };
 		AB3AF264288AD6030007539A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3AF262288AD6030007539A /* Main.storyboard */; };
 		AB3AF267288AD6030007539A /* FoodManChu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF265288AD6030007539A /* FoodManChu.xcdatamodeld */; };
 		AB3AF269288AD6040007539A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB3AF268288AD6040007539A /* Assets.xcassets */; };
 		AB3AF26C288AD6040007539A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3AF26A288AD6040007539A /* LaunchScreen.storyboard */; };
+		ABA49D07288AE10F00A32D2E /* Recipe+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D01288AE10F00A32D2E /* Recipe+CoreDataClass.swift */; };
+		ABA49D08288AE10F00A32D2E /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D02288AE10F00A32D2E /* Recipe+CoreDataProperties.swift */; };
+		ABA49D09288AE10F00A32D2E /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D03288AE10F00A32D2E /* Ingredient+CoreDataClass.swift */; };
+		ABA49D0A288AE10F00A32D2E /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D04288AE10F00A32D2E /* Ingredient+CoreDataProperties.swift */; };
+		ABA49D0B288AE10F00A32D2E /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D05288AE10F00A32D2E /* Category+CoreDataClass.swift */; };
+		ABA49D0C288AE10F00A32D2E /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D06288AE10F00A32D2E /* Category+CoreDataProperties.swift */; };
+		ABA49D10288AE52C00A32D2E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D0F288AE52C00A32D2E /* HomeViewModel.swift */; };
+		ABA49D12288AE53D00A32D2E /* HomeViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D11288AE53D00A32D2E /* HomeViewController+UITableViewDelegate.swift */; };
+		ABA49D14288AE55100A32D2E /* HomeViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D13288AE55100A32D2E /* HomeViewController+UITableViewDataSource.swift */; };
+		ABA49D17288AE60800A32D2E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D16288AE60800A32D2E /* Constants.swift */; };
+		ABA49D19288AE7AB00A32D2E /* AddEditRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D18288AE7AB00A32D2E /* AddEditRecipeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AB3AF259288AD6030007539A /* FoodManChu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodManChu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB3AF25C288AD6030007539A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB3AF25E288AD6030007539A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AB3AF260288AD6030007539A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AB3AF260288AD6030007539A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AB3AF263288AD6030007539A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB3AF266288AD6030007539A /* FoodManChu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodManChu.xcdatamodel; sourceTree = "<group>"; };
 		AB3AF268288AD6040007539A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB3AF26B288AD6040007539A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB3AF26D288AD6040007539A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABA49D01288AE10F00A32D2E /* Recipe+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataClass.swift"; sourceTree = "<group>"; };
+		ABA49D02288AE10F00A32D2E /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ABA49D03288AE10F00A32D2E /* Ingredient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataClass.swift"; sourceTree = "<group>"; };
+		ABA49D04288AE10F00A32D2E /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ABA49D05288AE10F00A32D2E /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
+		ABA49D06288AE10F00A32D2E /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ABA49D0F288AE52C00A32D2E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		ABA49D11288AE53D00A32D2E /* HomeViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
+		ABA49D13288AE55100A32D2E /* HomeViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
+		ABA49D16288AE60800A32D2E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		ABA49D18288AE7AB00A32D2E /* AddEditRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditRecipeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +82,9 @@
 			children = (
 				AB3AF25C288AD6030007539A /* AppDelegate.swift */,
 				AB3AF25E288AD6030007539A /* SceneDelegate.swift */,
-				AB3AF260288AD6030007539A /* ViewController.swift */,
+				AB3AF280288ADB080007539A /* Model */,
+				ABA49D0E288AE51B00A32D2E /* View */,
+				ABA49D15288AE5FC00A32D2E /* Utilities */,
 				AB3AF262288AD6030007539A /* Main.storyboard */,
 				AB3AF268288AD6040007539A /* Assets.xcassets */,
 				AB3AF26A288AD6040007539A /* LaunchScreen.storyboard */,
@@ -68,6 +92,55 @@
 				AB3AF265288AD6030007539A /* FoodManChu.xcdatamodeld */,
 			);
 			path = FoodManChu;
+			sourceTree = "<group>";
+		};
+		AB3AF280288ADB080007539A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABA49D01288AE10F00A32D2E /* Recipe+CoreDataClass.swift */,
+				ABA49D02288AE10F00A32D2E /* Recipe+CoreDataProperties.swift */,
+				ABA49D03288AE10F00A32D2E /* Ingredient+CoreDataClass.swift */,
+				ABA49D04288AE10F00A32D2E /* Ingredient+CoreDataProperties.swift */,
+				ABA49D05288AE10F00A32D2E /* Category+CoreDataClass.swift */,
+				ABA49D06288AE10F00A32D2E /* Category+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ABA49D0D288AE51300A32D2E /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				AB3AF260288AD6030007539A /* HomeViewController.swift */,
+				ABA49D0F288AE52C00A32D2E /* HomeViewModel.swift */,
+				ABA49D11288AE53D00A32D2E /* HomeViewController+UITableViewDelegate.swift */,
+				ABA49D13288AE55100A32D2E /* HomeViewController+UITableViewDataSource.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		ABA49D0E288AE51B00A32D2E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ABA49D0D288AE51300A32D2E /* HomeView */,
+				ABA49D1A288AEC2E00A32D2E /* AddEditRecipeView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ABA49D15288AE5FC00A32D2E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				ABA49D16288AE60800A32D2E /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		ABA49D1A288AEC2E00A32D2E /* AddEditRecipeView */ = {
+			isa = PBXGroup;
+			children = (
+				ABA49D18288AE7AB00A32D2E /* AddEditRecipeViewController.swift */,
+			);
+			path = AddEditRecipeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,9 +214,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB3AF261288AD6030007539A /* ViewController.swift in Sources */,
+				ABA49D07288AE10F00A32D2E /* Recipe+CoreDataClass.swift in Sources */,
+				ABA49D10288AE52C00A32D2E /* HomeViewModel.swift in Sources */,
+				ABA49D14288AE55100A32D2E /* HomeViewController+UITableViewDataSource.swift in Sources */,
+				AB3AF261288AD6030007539A /* HomeViewController.swift in Sources */,
+				ABA49D0A288AE10F00A32D2E /* Ingredient+CoreDataProperties.swift in Sources */,
+				ABA49D09288AE10F00A32D2E /* Ingredient+CoreDataClass.swift in Sources */,
 				AB3AF25D288AD6030007539A /* AppDelegate.swift in Sources */,
+				ABA49D12288AE53D00A32D2E /* HomeViewController+UITableViewDelegate.swift in Sources */,
+				ABA49D08288AE10F00A32D2E /* Recipe+CoreDataProperties.swift in Sources */,
+				ABA49D19288AE7AB00A32D2E /* AddEditRecipeViewController.swift in Sources */,
 				AB3AF25F288AD6030007539A /* SceneDelegate.swift in Sources */,
+				ABA49D0C288AE10F00A32D2E /* Category+CoreDataProperties.swift in Sources */,
+				ABA49D17288AE60800A32D2E /* Constants.swift in Sources */,
+				ABA49D0B288AE10F00A32D2E /* Category+CoreDataClass.swift in Sources */,
 				AB3AF267288AD6030007539A /* FoodManChu.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,9 +380,9 @@
 				INFOPLIST_FILE = FoodManChu/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,9 +408,9 @@
 				INFOPLIST_FILE = FoodManChu/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
