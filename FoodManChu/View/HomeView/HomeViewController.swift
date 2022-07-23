@@ -8,12 +8,15 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    let viewModel = HomeViewModel()
 
     let tableView = UITableView(frame: CGRect.zero, style: .grouped)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        viewModel.generateExampleRecipe()
+        viewModel.fetchRecipes()
         configureViews()
         layoutViews()
     }
@@ -27,7 +30,7 @@ class HomeViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.homeCellReuseIdentifier)
+        tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: Constants.homeCellReuseIdentifier)
     }
 
     @objc func addRecipeTapped() {

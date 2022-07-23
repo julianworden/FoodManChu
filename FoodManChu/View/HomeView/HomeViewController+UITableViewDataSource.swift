@@ -10,27 +10,35 @@ import UIKit
 
 extension HomeViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        // return viewModel.controller.numberOfSections
-        return 1
+        if let sections = viewModel.fetchedResultsController.sections {
+            return sections.count
+        } else {
+            return 1
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // viewModel.controller number of rows in given section
-        return 1
+        if let sections = viewModel.fetchedResultsController.sections {
+           let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+        } else {
+            return 1
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: Constants.homeCellReuseIdentifier)
-        tableView.dequeueReusableCell(withIdentifier: Constants.homeCellReuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.homeCellReuseIdentifier, for: indexPath)
 
-        configureCell(cell, indexPath: indexPath)
-        return cell
+        if let cell = cell as? RecipeTableViewCell {
+            configureCell(cell, indexPath: indexPath)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
 
-    func configureCell(_ cell: UITableViewCell, indexPath: IndexPath) {
-        var contentConfiguration = cell.defaultContentConfiguration()
-        contentConfiguration.text = "Name"
-        contentConfiguration.secondaryText = "Category"
-        cell.contentConfiguration = contentConfiguration
+    func configureCell(_ cell: RecipeTableViewCell, indexPath: IndexPath) {
+        let recipe = viewModel.fetchedResultsController.object(at: indexPath)
+        cell.viewModel = RecipeTableViewCellViewModel(recipe: recipe)
     }
 }
