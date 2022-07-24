@@ -1,14 +1,14 @@
 //
-//  HomeViewController+UITableViewDataSource.swift
+//  IngredientSelectionViewController+UITableViewDataSource.swift
 //  FoodManChu
 //
-//  Created by Julian Worden on 7/22/22.
+//  Created by Julian Worden on 7/23/22.
 //
 
 import Foundation
 import UIKit
 
-extension HomeViewController: UITableViewDataSource {
+extension IngredientSelectionViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if let sections = viewModel.fetchedResultsController.sections {
             return sections.count
@@ -19,7 +19,7 @@ extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = viewModel.fetchedResultsController.sections {
-           let sectionInfo = sections[section]
+            let sectionInfo = sections[section]
             return sectionInfo.numberOfObjects
         } else {
             return 1
@@ -27,9 +27,9 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.homeCellReuseIdentifier, for: indexPath)
-
-        if let cell = cell as? RecipeTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.ingredientCellReuseIdentifier,
+                                                 for: indexPath)
+        if let cell = cell as? IngredientTableViewViewCell {
             configureCell(cell, indexPath: indexPath)
             return cell
         } else {
@@ -37,10 +37,11 @@ extension HomeViewController: UITableViewDataSource {
         }
     }
 
-    func configureCell(_ cell: RecipeTableViewCell, indexPath: IndexPath) {
-        let recipe = viewModel.fetchedResultsController.object(at: indexPath)
-        cell.viewModel = RecipeTableViewCellViewModel(recipe: recipe)
-        cell.buttonDelegate = self
-        cell.selectionStyle = .none
+    func configureCell(_ cell: IngredientTableViewViewCell, indexPath: IndexPath) {
+        var contentConfiguration = cell.defaultContentConfiguration()
+        let ingredient = viewModel.fetchedResultsController.object(at: indexPath)
+
+        contentConfiguration.text = ingredient.name
+        cell.contentConfiguration = contentConfiguration
     }
 }

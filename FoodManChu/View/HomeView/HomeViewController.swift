@@ -5,17 +5,20 @@
 //  Created by Julian Worden on 7/22/22.
 //
 
+import Combine
 import UIKit
 
 class HomeViewController: UIViewController {
     let viewModel = HomeViewModel()
+    var subscribers = Set<AnyCancellable>()
 
     let tableView = UITableView(frame: CGRect.zero, style: .grouped)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        viewModel.generateExampleRecipe()
+        //        viewModel.generateExampleRecipe()
+        configureSubscribers()
         viewModel.fetchRecipes()
         configureViews()
         layoutViews()
@@ -25,19 +28,24 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         title = "Recipes"
         navigationItem.largeTitleDisplayMode = .always
-        let addRecipeButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addRecipeTapped))
+        let addRecipeButton = UIBarButtonItem(barButtonSystemItem: .add,
+                                              target: self,
+                                              action: #selector(addRecipeTapped))
         navigationItem.rightBarButtonItem = addRecipeButton
+        navigationItem.leftBarButtonItem = editButtonItem
 
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: Constants.homeCellReuseIdentifier)
+        tableView.backgroundColor = .white
     }
 
     @objc func addRecipeTapped() {
         let addEditRecipeViewController = AddEditRecipeViewController()
-        addEditRecipeViewController.title = "Add Recipe"
-
         let addEditRecipeNavigationController = UINavigationController(rootViewController: addEditRecipeViewController)
+
+        addEditRecipeViewController.title = "Add Recipe"
+        addEditRecipeViewController.viewModel = AddEditRecipeViewModel(recipeToEdit: nil)
         present(addEditRecipeNavigationController, animated: true)
     }
 }
@@ -59,3 +67,38 @@ extension HomeViewController {
     }
 }
 
+// MARK: - Combine
+
+// swiftlint:disable force_cast
+extension HomeViewController {
+    func configureSubscribers() {
+        subscribers = [
+            viewModel.$updatedControllerIndexPath
+                .sink(receiveValue: { [weak self] indexPath in
+                    if let indexPath = indexPath {
+                        switch self?.viewModel.controllerChangeType {
+                        case .delete:
+                            self?.tableView.beginUpdates()
+                            self?.tableView.deleteRows(at: [indexPath], with: .none)
+                            self?.tableView.endUpdates()
+                        case .insert:
+                            self?.tableView.insertRows(at: [indexPath], with: .none)
+                            self?.tableView.reloadData()
+
+                        case .update:
+                            let cell = self?.tableView.cellForRow(at: indexPath) as! RecipeTableViewCell
+                            self?.configureCell(cell, indexPath: indexPath)
+                            self?.tableView.reloadData()
+
+                        case .move:
+                            self?.tableView.insertRows(at: [indexPath], with: .none)
+                            self?.tableView.reloadData()
+
+                        default:
+                            break
+                        }
+                    }
+                })
+        ]
+    }
+}

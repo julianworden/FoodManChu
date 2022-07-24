@@ -10,6 +10,8 @@ import CoreData
 
 class HomeViewModel: NSObject {
     var fetchedResultsController: NSFetchedResultsController<Recipe>!
+    @Published var updatedControllerIndexPath: IndexPath?
+    var controllerChangeType: NSFetchedResultsChangeType?
 
     func generateExampleRecipe() {
         let exampleRecipe = Recipe(context: Constants.managedObjectContext)
@@ -29,13 +31,18 @@ class HomeViewModel: NSObject {
                                                                   sectionNameKeyPath: nil,
                                                                   cacheName: nil)
 
-        self.fetchedResultsController = fetchedResultsController
         fetchedResultsController.delegate = self
+        self.fetchedResultsController = fetchedResultsController
 
         do {
             try fetchedResultsController.performFetch()
         } catch {
             print(error)
         }
+    }
+
+    func deleteRecipe(recipe: Recipe) {
+        Constants.managedObjectContext.delete(recipe)
+        Constants.appDelegate.saveContext()
     }
 }

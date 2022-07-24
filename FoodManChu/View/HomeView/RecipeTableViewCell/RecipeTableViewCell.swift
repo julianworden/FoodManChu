@@ -14,6 +14,7 @@ class RecipeTableViewCell: UITableViewCell {
             layoutViews()
         }
     }
+    weak var buttonDelegate: RecipeTableViewCellButtonDelegate?
 
     lazy var labelStack = UIStackView(arrangedSubviews: [recipeNameLabel, recipePrepTimeLabel, recipeDetailsLabel])
     let recipeNameLabel = UILabel()
@@ -35,19 +36,28 @@ class RecipeTableViewCell: UITableViewCell {
         labelStack.axis = .vertical
         labelStack.alignment = .leading
         labelStack.distribution = .fill
+        labelStack.spacing = 2
 
         recipeNameLabel.text = viewModel.recipeName
+        recipeNameLabel.font = .systemFont(ofSize: 20, weight: .bold)
 
-        recipePrepTimeLabel.text = String(viewModel.recipePrepTime)
+        recipePrepTimeLabel.text = "Prep Time: \(String(viewModel.recipePrepTime)) mins."
 
         recipeDetailsLabel.text = viewModel.recipeDetails
+        recipeDetailsLabel.textColor = .secondaryLabel
 
         buttonStack.axis = .horizontal
         buttonStack.distribution = .fillEqually
+        buttonStack.spacing = 8
 
         editButton.setTitle("Edit", for: .normal)
+        editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
 
         detailsButton.setTitle("Details", for: .normal)
+    }
+
+    @objc func editButtonTapped() {
+        buttonDelegate?.recipeTableViewCell(self, editButtonWasTapped: true)
     }
 }
 
@@ -71,7 +81,7 @@ extension RecipeTableViewCell {
             buttonStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             buttonStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
 
-            editButton.heightAnchor.constraint(equalToConstant: 50)
+            editButton.heightAnchor.constraint(equalToConstant: 35)
         ])
     }
 }

@@ -9,13 +9,26 @@ import Foundation
 import UIKit
 
 extension HomeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        let status = navigationItem.leftBarButtonItem?.title
 
-        let addEditRecipeViewController = AddEditRecipeViewController()
-        let addEditRecipeNavigationController = UINavigationController(rootViewController: addEditRecipeViewController)
-        addEditRecipeViewController.title = "Edit Recipe"
-        
-        present(addEditRecipeNavigationController, animated: true)
+        if status == "Edit" {
+            tableView.beginUpdates()
+            tableView.isEditing = true
+            navigationItem.leftBarButtonItem?.title = "Done"
+            tableView.endUpdates()
+        } else if status == "Done" {
+            tableView.beginUpdates()
+            tableView.isEditing = false
+            navigationItem.leftBarButtonItem?.title = "Edit"
+            tableView.endUpdates()
+        }
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let recipe = viewModel.fetchedResultsController.object(at: indexPath)
+            viewModel.deleteRecipe(recipe: recipe)
+        }
     }
 }

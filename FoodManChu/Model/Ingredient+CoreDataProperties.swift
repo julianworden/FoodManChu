@@ -2,13 +2,12 @@
 //  Ingredient+CoreDataProperties.swift
 //  FoodManChu
 //
-//  Created by Julian Worden on 7/22/22.
+//  Created by Julian Worden on 7/23/22.
 //
 //
 
 import Foundation
 import CoreData
-
 
 extension Ingredient {
 
@@ -17,6 +16,7 @@ extension Ingredient {
     }
 
     @NSManaged public var name: String?
+    @NSManaged public var isUserCreated: Bool
     @NSManaged public var recipes: NSSet?
 
 }
@@ -38,6 +38,6 @@ extension Ingredient {
 
 }
 
-extension Ingredient : Identifiable {
+extension Ingredient: Identifiable {
 
 }
