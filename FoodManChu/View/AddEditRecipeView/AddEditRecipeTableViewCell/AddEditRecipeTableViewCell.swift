@@ -16,7 +16,7 @@ class AddEditRecipeTableViewCell: UITableViewCell {
     let instructionsTextView = UITextView()
     let prepTimeTextField = UITextField()
     let ingredientsLabel = UILabel()
-    let categoryLabel = UILabel()
+    let categoryPicker = UIPickerView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -68,7 +68,9 @@ class AddEditRecipeTableViewCell: UITableViewCell {
         instructionsTextView.textContainer.maximumNumberOfLines = 3
         instructionsTextView.isScrollEnabled = false
         instructionsTextView.delegate = self
-        instructionsTextView.refreshControl?.addTarget(self, action: #selector(instructionsTextViewChanged), for: .editingChanged)
+        instructionsTextView.refreshControl?.addTarget(self,
+                                                       action: #selector(instructionsTextViewChanged),
+                                                       for: .editingChanged)
 
         contentView.addSubview(instructionsTextView)
 
@@ -117,18 +119,30 @@ class AddEditRecipeTableViewCell: UITableViewCell {
         ])
     }
 
-    func addAndConfigureCategoryLabel() {
-        categoryLabel.text = "Category"
+    func addAndConfigureCategoryPicker() {
+//        viewModel.generateCategories()
+        do {
+            try viewModel.fetchCategories()
+        } catch {
+            print(error)
+        }
 
-        contentView.addSubview(categoryLabel)
+        categoryPicker.delegate = self
+        categoryPicker.dataSource = self
+        if let recipeToEdit = viewModel.recipeToEdit,
+           let categoryIndexPosition = viewModel.categories?.firstIndex(of: recipeToEdit.category!) {
+            categoryPicker.selectRow(categoryIndexPosition, inComponent: 0, animated: true)
+        }
 
-        categoryLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(categoryPicker)
+
+        categoryPicker.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            categoryLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            categoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            categoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 19),
-            categoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -19)
+            categoryPicker.topAnchor.constraint(equalTo: contentView.topAnchor),
+            categoryPicker.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            categoryPicker.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            categoryPicker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0)
         ])
     }
 

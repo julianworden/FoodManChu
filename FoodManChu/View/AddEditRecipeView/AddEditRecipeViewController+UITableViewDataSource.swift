@@ -91,8 +91,11 @@ extension AddEditRecipeViewController: UITableViewDataSource {
             cell.addAndConfigureIngredientsLabel()
             cell.accessoryType = .disclosureIndicator
         case 5:
-            cell.addAndConfigureCategoryLabel()
-            cell.accessoryType = .disclosureIndicator
+            cell.addAndConfigureCategoryPicker()
+            newRecipeCategorySubscriber = cell.viewModel.$recipeCategory
+                .sink(receiveValue: { [weak self] newRecipeCategory in
+                    self?.viewModel.recipeCategory = newRecipeCategory
+                })
         default:
             break
         }
@@ -102,6 +105,8 @@ extension AddEditRecipeViewController: UITableViewDataSource {
         switch indexPath.section {
         case 1, 2:
             return 85
+        case 5:
+            return 150
         default:
             return 44
         }

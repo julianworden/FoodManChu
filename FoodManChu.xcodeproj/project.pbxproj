@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB33E04F288DCF500026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33E04E288DCF500026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDelegate.swift */; };
+		AB33E051288DCF570026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33E050288DCF570026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDataSource.swift */; };
 		AB3AF25D288AD6030007539A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF25C288AD6030007539A /* AppDelegate.swift */; };
 		AB3AF25F288AD6030007539A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF25E288AD6030007539A /* SceneDelegate.swift */; };
 		AB3AF261288AD6030007539A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF260288AD6030007539A /* HomeViewController.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB33E04E288DCF500026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEditRecipeTableViewCell+UIPickerViewDelegate.swift"; sourceTree = "<group>"; };
+		AB33E050288DCF570026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEditRecipeTableViewCell+UIPickerViewDataSource.swift"; sourceTree = "<group>"; };
 		AB3AF259288AD6030007539A /* FoodManChu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodManChu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB3AF25C288AD6030007539A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB3AF25E288AD6030007539A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 			children = (
 				ABED472D288C31D20032DDF2 /* AddEditRecipeTableViewCell.swift */,
 				ABED472F288C32010032DDF2 /* AddEditRecipeTableViewCellViewModel.swift */,
+				AB33E04E288DCF500026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDelegate.swift */,
+				AB33E050288DCF570026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDataSource.swift */,
 				ABED4731288C41FF0032DDF2 /* AddEditRecipeTableViewCell+UITextViewDelegate.swift */,
 			);
 			path = AddEditRecipeTableViewCell;
@@ -332,6 +338,7 @@
 				ABB843A1288C4A8B00D57037 /* IngredientSelectionViewController+UITableViewDelegate.swift in Sources */,
 				ABED4737288C47F20032DDF2 /* IngredientSelectionViewModel.swift in Sources */,
 				ABED4735288C47E40032DDF2 /* IngredientSelectionViewController.swift in Sources */,
+				AB33E04F288DCF500026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDelegate.swift in Sources */,
 				AB3AF25D288AD6030007539A /* AppDelegate.swift in Sources */,
 				ABA49D12288AE53D00A32D2E /* HomeViewController+UITableViewDelegate.swift in Sources */,
 				ABA49D08288AE10F00A32D2E /* Recipe+CoreDataProperties.swift in Sources */,
@@ -343,6 +350,7 @@
 				ABA49D0C288AE10F00A32D2E /* Category+CoreDataProperties.swift in Sources */,
 				ABED472B288C31430032DDF2 /* AddEditRecipeViewController+UITableViewDelegate.swift in Sources */,
 				ABA49D17288AE60800A32D2E /* Constants.swift in Sources */,
+				AB33E051288DCF570026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDataSource.swift in Sources */,
 				ABA49D0B288AE10F00A32D2E /* Category+CoreDataClass.swift in Sources */,
 				ABED4732288C41FF0032DDF2 /* AddEditRecipeTableViewCell+UITextViewDelegate.swift in Sources */,
 				AB4125F6288B90F500A075DC /* RecipeTableViewCellViewModel.swift in Sources */,

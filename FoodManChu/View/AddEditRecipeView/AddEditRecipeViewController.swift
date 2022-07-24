@@ -20,6 +20,7 @@ class AddEditRecipeViewController: UIViewController {
     var newRecipeDetailsSubscriber: AnyCancellable?
     var newRecipeInstructionsSubscriber: AnyCancellable?
     var newRecipePrepTimeSubscriber: AnyCancellable?
+    var newRecipeCategorySubscriber: AnyCancellable?
 
     let tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
 
