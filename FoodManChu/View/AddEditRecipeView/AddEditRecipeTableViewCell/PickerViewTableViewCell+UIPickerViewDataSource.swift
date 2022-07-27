@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension AddEditRecipeTableViewCell: UIPickerViewDataSource {
+extension PickerViewTableViewCell: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let category = viewModel.categories?[row]
         return category?.name

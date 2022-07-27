@@ -22,6 +22,14 @@ extension Recipe {
     @NSManaged public var category: Category?
     @NSManaged public var ingredients: NSSet?
 
+    var ingredientsArray: [Ingredient] {
+        if let set = ingredients as? Set<Ingredient> {
+            return Array(set)
+        } else {
+            return []
+        }
+    }
+
 }
 
 // MARK: Generated accessors for ingredients

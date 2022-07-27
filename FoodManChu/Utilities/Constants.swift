@@ -14,6 +14,17 @@ struct Constants {
     static let managedObjectContext = appDelegate.persistentContainer.viewContext
 
     static let homeCellReuseIdentifier = "HomeCell"
-    static let addEditRecipeCellReuseIdentifier = "AddEditRecipeCell"
+    static let textFieldCellReuseIdentifier = "TextFieldCell"
+    static let textViewCellReuseIdentifier = "TextViewCell"
+    static let pickerViewCellReuseIdentifier = "PickerViewCell"
+    static let labelCellReuseIdentifier = "LabelCell"
+    static let labelWithNavigationCellReuseIdentifier = "LabelWithNavigationCell"
     static let ingredientCellReuseIdentifier = "IngredientCell"
+
+    static let ingredientChosenNotificationKey = "IngredientsChosen"
+    static let ingredientChosenNotification = Notification.Name(ingredientChosenNotificationKey)
+    static let notifyIngredientCellNotificationKey = "NotifyIngredientCell"
+    static let notifyIngredientCellNotification = Notification.Name(notifyIngredientCellNotificationKey)
+    static let reloadIngredientsListNotificationKey = "ReloadIngredientsList"
+    static let reloadIngredientsListNotification = Notification.Name(reloadIngredientsListNotificationKey)
 }

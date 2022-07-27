@@ -14,7 +14,12 @@ extension AddEditRecipeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case 4:
+            return 2
+        default:
+            return 1
+        }
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -37,68 +42,102 @@ extension AddEditRecipeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.addEditRecipeCellReuseIdentifier,
-                                                 for: indexPath)
-        if let cell = cell as? AddEditRecipeTableViewCell {
-            configureCell(cell, indexPath: indexPath)
-            return cell
-        } else {
+        switch indexPath {
+        case IndexPath(row: 0, section: 0):
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.textFieldCellReuseIdentifier,
+                                                        for: indexPath) as? TextFieldTableViewCell {
+                cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
+                cell.addAndConfigureNameTextField()
+                cell.selectionStyle = .none
+                newRecipeNameSubscriber = cell.viewModel.$recipeName
+                    .sink(receiveValue: { [weak self] recipeName in
+                        if let recipeName = recipeName {
+                            self?.viewModel.recipeName = recipeName
+                        }
+                    })
+                return cell
+            }
+        case IndexPath(row: 0, section: 1):
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.textViewCellReuseIdentifier,
+                                                        for: indexPath) as? TextViewTableViewCell {
+                cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
+                cell.addAndConfigureDescriptionTextView()
+                cell.selectionStyle = .none
+                newRecipeDetailsSubscriber = cell.viewModel.$recipeDetails
+                    .sink(receiveValue: { [weak self] recipeDetails in
+                        if let recipeDetails = recipeDetails {
+                            self?.viewModel.recipeDetails = recipeDetails
+                        }
+                    })
+                return cell
+            }
+        case IndexPath(row: 0, section: 2):
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.textViewCellReuseIdentifier,
+                                                        for: indexPath) as? TextViewTableViewCell {
+                cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
+                cell.addAndConfigureInstructionsTextView()
+                cell.selectionStyle = .none
+                newRecipeInstructionsSubscriber = cell.viewModel.$recipeInstructions
+                    .sink(receiveValue: { [weak self] recipeInstructions in
+                        if let recipeInstructions = recipeInstructions {
+                            self?.viewModel.recipeInstructions = recipeInstructions
+                        }
+                    })
+                return cell
+            }
+        case IndexPath(row: 0, section: 3):
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.textFieldCellReuseIdentifier,
+                                                        for: indexPath) as? TextFieldTableViewCell {
+                cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
+                cell.addAndConfigurePrepTimeTextField()
+                cell.selectionStyle = .none
+                newRecipePrepTimeSubscriber = cell.viewModel.$recipePrepTime
+                    .sink(receiveValue: { [weak self] recipePrepTime in
+                        if let recipePrepTime = recipePrepTime {
+                            self?.viewModel.recipePrepTime = recipePrepTime
+                        }
+                    })
+                return cell
+            }
+        case IndexPath(row: 0, section: 4):
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.labelWithNavigationCellReuseIdentifier,
+                                                        for: indexPath) as? LabelWithNavigationTableViewCell {
+                cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
+                cell.addAndConfigureIngredientsLabel()
+                cell.accessoryType = .disclosureIndicator
+                return cell
+
+            }
+        case IndexPath(row: 1, section: 4):
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.labelCellReuseIdentifier,
+                                                        for: indexPath) as? LabelTableViewCell {
+                cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
+                cell.addAndConfigureIngredientsListLabel()
+                newRecipeIngredientsSubscriber = cell.viewModel.$recipeIngredients
+                    .sink(receiveValue: { ingredients in
+                        if let ingredients = ingredients {
+                            let ingredientNameArray = ingredients.map { $0.name! }
+                            cell.ingredientsListLabel.text = ingredientNameArray.joined(separator: ", ")
+                            tableView.reloadRows(at: [IndexPath(row: 0, section: 4)], with: .none)
+                        }
+                    })
+                return cell
+            }
+        case IndexPath(row: 0, section: 5):
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.pickerViewCellReuseIdentifier,
+                                                        for: indexPath) as? PickerViewTableViewCell {
+                cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
+                cell.addAndConfigureCategoryPicker()
+                newRecipeCategorySubscriber = cell.viewModel.$recipeCategory
+                    .sink(receiveValue: { [weak self] newRecipeCategory in
+                        self?.viewModel.recipeCategory = newRecipeCategory
+                    })
+                return cell
+            }
+        default:
             return UITableViewCell()
         }
-    }
-
-    func configureCell(_ cell: AddEditRecipeTableViewCell, indexPath: IndexPath) {
-        cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
-
-        switch indexPath.section {
-        case 0:
-            newRecipeNameSubscriber = cell.viewModel.$recipeName
-                .sink(receiveValue: { [weak self] recipeName in
-                    if let recipeName = recipeName {
-                        self?.viewModel.recipeName = recipeName
-                    }
-                })
-            cell.addAndConfigureNameTextField()
-            cell.selectionStyle = .none
-        case 1:
-            cell.addAndConfigureDescriptionTextView()
-            cell.selectionStyle = .none
-            newRecipeDetailsSubscriber = cell.viewModel.$recipeDetails
-                .sink(receiveValue: { [weak self] recipeDetails in
-                    if let recipeDetails = recipeDetails {
-                        self?.viewModel.recipeDetails = recipeDetails
-                    }
-                })
-        case 2:
-            cell.addAndConfigureInstructionsTextView()
-            cell.selectionStyle = .none
-            newRecipeInstructionsSubscriber = cell.viewModel.$recipeInstructions
-                .sink(receiveValue: { [weak self] recipeInstructions in
-                    if let recipeInstructions = recipeInstructions {
-                        self?.viewModel.recipeInstructions = recipeInstructions
-                    }
-                })
-        case 3:
-            cell.addAndConfigurePrepTimeTextField()
-            cell.selectionStyle = .none
-            newRecipePrepTimeSubscriber = cell.viewModel.$recipePrepTime
-                .sink(receiveValue: { [weak self] recipePrepTime in
-                    if let recipePrepTime = recipePrepTime {
-                        self?.viewModel.recipePrepTime = recipePrepTime
-                    }
-                })
-        case 4:
-            cell.addAndConfigureIngredientsLabel()
-            cell.accessoryType = .disclosureIndicator
-        case 5:
-            cell.addAndConfigureCategoryPicker()
-            newRecipeCategorySubscriber = cell.viewModel.$recipeCategory
-                .sink(receiveValue: { [weak self] newRecipeCategory in
-                    self?.viewModel.recipeCategory = newRecipeCategory
-                })
-        default:
-            break
-        }
+        return UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

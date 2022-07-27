@@ -12,7 +12,9 @@ class IngredientSelectionViewModel: NSObject {
     var fetchedResultsController: NSFetchedResultsController<Ingredient>!
     var selectedIngredients = [Ingredient]() {
         didSet {
-            print(selectedIngredients)
+            NotificationCenter.default.post(name: Constants.ingredientChosenNotification,
+                                            object: nil,
+                                            userInfo: ["ingredients": selectedIngredients])
         }
     }
 

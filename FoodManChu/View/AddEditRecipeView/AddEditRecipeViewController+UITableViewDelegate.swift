@@ -17,7 +17,8 @@ extension AddEditRecipeViewController: UITableViewDelegate {
 
         switch indexPath {
         case ingredientIndexPath:
-            navigationController?.pushViewController(IngredientSelectionViewController(), animated: true)
+            let ingredientSelectionViewController = IngredientSelectionViewController()
+            navigationController?.pushViewController(ingredientSelectionViewController, animated: true)
         case categoryIndexPath:
             // Push to category view controller
             return

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB33E04F288DCF500026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33E04E288DCF500026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDelegate.swift */; };
-		AB33E051288DCF570026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33E050288DCF570026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDataSource.swift */; };
+		AB33E04F288DCF500026B6BE /* PickerViewTableViewCell+UIPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33E04E288DCF500026B6BE /* PickerViewTableViewCell+UIPickerViewDelegate.swift */; };
+		AB33E051288DCF570026B6BE /* PickerViewTableViewCell+UIPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33E050288DCF570026B6BE /* PickerViewTableViewCell+UIPickerViewDataSource.swift */; };
 		AB3AF25D288AD6030007539A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF25C288AD6030007539A /* AppDelegate.swift */; };
 		AB3AF25F288AD6030007539A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF25E288AD6030007539A /* SceneDelegate.swift */; };
 		AB3AF261288AD6030007539A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF260288AD6030007539A /* HomeViewController.swift */; };
@@ -19,6 +19,11 @@
 		AB4125F3288B90A200A075DC /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4125F2288B90A200A075DC /* RecipeTableViewCell.swift */; };
 		AB4125F6288B90F500A075DC /* RecipeTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4125F5288B90F500A075DC /* RecipeTableViewCellViewModel.swift */; };
 		AB4125F8288B95C100A075DC /* HomeViewModel+NSFetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4125F7288B95C100A075DC /* HomeViewModel+NSFetchedResultsControllerDelegate.swift */; };
+		AB6F9A9A2890951E009D2E93 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F9A992890951E009D2E93 /* TextFieldTableViewCell.swift */; };
+		AB6F9A9C28909527009D2E93 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F9A9B28909527009D2E93 /* TextViewTableViewCell.swift */; };
+		AB6F9A9E28909531009D2E93 /* PickerViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F9A9D28909531009D2E93 /* PickerViewTableViewCell.swift */; };
+		AB6F9AA02890957B009D2E93 /* LabelWithNavigationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F9A9F2890957B009D2E93 /* LabelWithNavigationTableViewCell.swift */; };
+		AB6F9AA228909581009D2E93 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F9AA128909581009D2E93 /* LabelTableViewCell.swift */; };
 		ABA49D07288AE10F00A32D2E /* Recipe+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D01288AE10F00A32D2E /* Recipe+CoreDataClass.swift */; };
 		ABA49D08288AE10F00A32D2E /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D02288AE10F00A32D2E /* Recipe+CoreDataProperties.swift */; };
 		ABA49D0B288AE10F00A32D2E /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D05288AE10F00A32D2E /* Category+CoreDataClass.swift */; };
@@ -39,16 +44,15 @@
 		ABED4727288C2EBF0032DDF2 /* HomeViewController+RecipeTableViewCellButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABED4726288C2EBF0032DDF2 /* HomeViewController+RecipeTableViewCellButtonDelegate.swift */; };
 		ABED4729288C31370032DDF2 /* AddEditRecipeViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABED4728288C31370032DDF2 /* AddEditRecipeViewController+UITableViewDataSource.swift */; };
 		ABED472B288C31430032DDF2 /* AddEditRecipeViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABED472A288C31430032DDF2 /* AddEditRecipeViewController+UITableViewDelegate.swift */; };
-		ABED472E288C31D20032DDF2 /* AddEditRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABED472D288C31D20032DDF2 /* AddEditRecipeTableViewCell.swift */; };
 		ABED4730288C32010032DDF2 /* AddEditRecipeTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABED472F288C32010032DDF2 /* AddEditRecipeTableViewCellViewModel.swift */; };
-		ABED4732288C41FF0032DDF2 /* AddEditRecipeTableViewCell+UITextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABED4731288C41FF0032DDF2 /* AddEditRecipeTableViewCell+UITextViewDelegate.swift */; };
+		ABED4732288C41FF0032DDF2 /* TextViewTableViewCell+UITextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABED4731288C41FF0032DDF2 /* TextViewTableViewCell+UITextViewDelegate.swift */; };
 		ABED4735288C47E40032DDF2 /* IngredientSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABED4734288C47E40032DDF2 /* IngredientSelectionViewController.swift */; };
 		ABED4737288C47F20032DDF2 /* IngredientSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABED4736288C47F20032DDF2 /* IngredientSelectionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AB33E04E288DCF500026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEditRecipeTableViewCell+UIPickerViewDelegate.swift"; sourceTree = "<group>"; };
-		AB33E050288DCF570026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEditRecipeTableViewCell+UIPickerViewDataSource.swift"; sourceTree = "<group>"; };
+		AB33E04E288DCF500026B6BE /* PickerViewTableViewCell+UIPickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PickerViewTableViewCell+UIPickerViewDelegate.swift"; sourceTree = "<group>"; };
+		AB33E050288DCF570026B6BE /* PickerViewTableViewCell+UIPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PickerViewTableViewCell+UIPickerViewDataSource.swift"; sourceTree = "<group>"; };
 		AB3AF259288AD6030007539A /* FoodManChu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodManChu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB3AF25C288AD6030007539A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB3AF25E288AD6030007539A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +65,11 @@
 		AB4125F2288B90A200A075DC /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		AB4125F5288B90F500A075DC /* RecipeTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		AB4125F7288B95C100A075DC /* HomeViewModel+NSFetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModel+NSFetchedResultsControllerDelegate.swift"; sourceTree = "<group>"; };
+		AB6F9A992890951E009D2E93 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		AB6F9A9B28909527009D2E93 /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
+		AB6F9A9D28909531009D2E93 /* PickerViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewTableViewCell.swift; sourceTree = "<group>"; };
+		AB6F9A9F2890957B009D2E93 /* LabelWithNavigationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithNavigationTableViewCell.swift; sourceTree = "<group>"; };
+		AB6F9AA128909581009D2E93 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		ABA49D01288AE10F00A32D2E /* Recipe+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ABA49D02288AE10F00A32D2E /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ABA49D05288AE10F00A32D2E /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -81,9 +90,8 @@
 		ABED4726288C2EBF0032DDF2 /* HomeViewController+RecipeTableViewCellButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+RecipeTableViewCellButtonDelegate.swift"; sourceTree = "<group>"; };
 		ABED4728288C31370032DDF2 /* AddEditRecipeViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEditRecipeViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		ABED472A288C31430032DDF2 /* AddEditRecipeViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEditRecipeViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
-		ABED472D288C31D20032DDF2 /* AddEditRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditRecipeTableViewCell.swift; sourceTree = "<group>"; };
 		ABED472F288C32010032DDF2 /* AddEditRecipeTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditRecipeTableViewCellViewModel.swift; sourceTree = "<group>"; };
-		ABED4731288C41FF0032DDF2 /* AddEditRecipeTableViewCell+UITextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEditRecipeTableViewCell+UITextViewDelegate.swift"; sourceTree = "<group>"; };
+		ABED4731288C41FF0032DDF2 /* TextViewTableViewCell+UITextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextViewTableViewCell+UITextViewDelegate.swift"; sourceTree = "<group>"; };
 		ABED4734288C47E40032DDF2 /* IngredientSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientSelectionViewController.swift; sourceTree = "<group>"; };
 		ABED4736288C47F20032DDF2 /* IngredientSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientSelectionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,11 +218,15 @@
 		ABED472C288C31B10032DDF2 /* AddEditRecipeTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				ABED472D288C31D20032DDF2 /* AddEditRecipeTableViewCell.swift */,
+				AB6F9A992890951E009D2E93 /* TextFieldTableViewCell.swift */,
+				AB6F9A9B28909527009D2E93 /* TextViewTableViewCell.swift */,
+				AB6F9A9D28909531009D2E93 /* PickerViewTableViewCell.swift */,
+				AB6F9AA128909581009D2E93 /* LabelTableViewCell.swift */,
+				AB6F9A9F2890957B009D2E93 /* LabelWithNavigationTableViewCell.swift */,
 				ABED472F288C32010032DDF2 /* AddEditRecipeTableViewCellViewModel.swift */,
-				AB33E04E288DCF500026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDelegate.swift */,
-				AB33E050288DCF570026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDataSource.swift */,
-				ABED4731288C41FF0032DDF2 /* AddEditRecipeTableViewCell+UITextViewDelegate.swift */,
+				ABED4731288C41FF0032DDF2 /* TextViewTableViewCell+UITextViewDelegate.swift */,
+				AB33E04E288DCF500026B6BE /* PickerViewTableViewCell+UIPickerViewDelegate.swift */,
+				AB33E050288DCF570026B6BE /* PickerViewTableViewCell+UIPickerViewDataSource.swift */,
 			);
 			path = AddEditRecipeTableViewCell;
 			sourceTree = "<group>";
@@ -329,35 +341,39 @@
 				ABA49D07288AE10F00A32D2E /* Recipe+CoreDataClass.swift in Sources */,
 				ABED4730288C32010032DDF2 /* AddEditRecipeTableViewCellViewModel.swift in Sources */,
 				ABA49D10288AE52C00A32D2E /* HomeViewModel.swift in Sources */,
-				ABED472E288C31D20032DDF2 /* AddEditRecipeTableViewCell.swift in Sources */,
 				ABED4724288C2E260032DDF2 /* AddEditRecipeViewModel.swift in Sources */,
 				ABA49D14288AE55100A32D2E /* HomeViewController+UITableViewDataSource.swift in Sources */,
 				ABB843A8288C52D200D57037 /* Ingredient+CoreDataClass.swift in Sources */,
 				AB3AF261288AD6030007539A /* HomeViewController.swift in Sources */,
+				AB6F9A9A2890951E009D2E93 /* TextFieldTableViewCell.swift in Sources */,
 				ABB843AC288CC03E00D57037 /* IngredientTableViewViewCell.swift in Sources */,
 				ABB843A1288C4A8B00D57037 /* IngredientSelectionViewController+UITableViewDelegate.swift in Sources */,
 				ABED4737288C47F20032DDF2 /* IngredientSelectionViewModel.swift in Sources */,
 				ABED4735288C47E40032DDF2 /* IngredientSelectionViewController.swift in Sources */,
-				AB33E04F288DCF500026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDelegate.swift in Sources */,
+				AB33E04F288DCF500026B6BE /* PickerViewTableViewCell+UIPickerViewDelegate.swift in Sources */,
 				AB3AF25D288AD6030007539A /* AppDelegate.swift in Sources */,
+				AB6F9AA02890957B009D2E93 /* LabelWithNavigationTableViewCell.swift in Sources */,
 				ABA49D12288AE53D00A32D2E /* HomeViewController+UITableViewDelegate.swift in Sources */,
+				AB6F9A9C28909527009D2E93 /* TextViewTableViewCell.swift in Sources */,
 				ABA49D08288AE10F00A32D2E /* Recipe+CoreDataProperties.swift in Sources */,
 				ABED4722288C2A180032DDF2 /* RecipeTableViewCellButtonDelegate.swift in Sources */,
 				ABA49D19288AE7AB00A32D2E /* AddEditRecipeViewController.swift in Sources */,
 				ABB843A5288C4DF900D57037 /* IngredientSelectionViewModel+NSFetchedResultsControllerDelegate.swift in Sources */,
+				AB6F9AA228909581009D2E93 /* LabelTableViewCell.swift in Sources */,
 				AB4125F8288B95C100A075DC /* HomeViewModel+NSFetchedResultsControllerDelegate.swift in Sources */,
 				AB3AF25F288AD6030007539A /* SceneDelegate.swift in Sources */,
 				ABA49D0C288AE10F00A32D2E /* Category+CoreDataProperties.swift in Sources */,
 				ABED472B288C31430032DDF2 /* AddEditRecipeViewController+UITableViewDelegate.swift in Sources */,
 				ABA49D17288AE60800A32D2E /* Constants.swift in Sources */,
-				AB33E051288DCF570026B6BE /* AddEditRecipeTableViewCell+UIPickerViewDataSource.swift in Sources */,
+				AB33E051288DCF570026B6BE /* PickerViewTableViewCell+UIPickerViewDataSource.swift in Sources */,
 				ABA49D0B288AE10F00A32D2E /* Category+CoreDataClass.swift in Sources */,
-				ABED4732288C41FF0032DDF2 /* AddEditRecipeTableViewCell+UITextViewDelegate.swift in Sources */,
+				ABED4732288C41FF0032DDF2 /* TextViewTableViewCell+UITextViewDelegate.swift in Sources */,
 				AB4125F6288B90F500A075DC /* RecipeTableViewCellViewModel.swift in Sources */,
 				AB3AF267288AD6030007539A /* FoodManChu.xcdatamodeld in Sources */,
 				AB4125F3288B90A200A075DC /* RecipeTableViewCell.swift in Sources */,
 				ABB843A3288C4AA800D57037 /* IngredientSelectionViewController+UITableViewDataSource.swift in Sources */,
 				ABED4727288C2EBF0032DDF2 /* HomeViewController+RecipeTableViewCellButtonDelegate.swift in Sources */,
+				AB6F9A9E28909531009D2E93 /* PickerViewTableViewCell.swift in Sources */,
 				ABED4729288C31370032DDF2 /* AddEditRecipeViewController+UITableViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,7 +24,7 @@ class AddEditRecipeViewModel {
             self.recipeDetails = recipeToEdit.details
             self.recipeInstructions = recipeToEdit.instructions
             self.recipePrepTime = Int(recipeToEdit.prepTime)
-//            self.recipeIngredients = recipeToEdit.ingredients
+            self.recipeIngredients = recipeToEdit.ingredientsArray
             self.recipeCategory = recipeToEdit.category
         }
     }
@@ -38,17 +38,22 @@ class AddEditRecipeViewModel {
             recipe = Recipe(context: Constants.managedObjectContext)
         }
 
-        guard let recipeName = recipeName,
+            guard let recipeName = recipeName,
               let recipeDetails = recipeDetails,
               let recipeInstructions = recipeInstructions,
               let recipePrepTime = recipePrepTime,
-              let recipeCategory = recipeCategory else { return }
+              let recipeCategory = recipeCategory,
+              let recipeIngredients = recipeIngredients else { return }
 
         recipe.name = recipeName
         recipe.details = recipeDetails
         recipe.instructions = recipeInstructions
         recipe.prepTime = Int16(recipePrepTime)
         recipe.category = recipeCategory
+
+        let recipeIngredientsSet = Set(recipeIngredients)
+        let recipeIngredientsNSSet = recipeIngredientsSet as NSSet
+        recipe.ingredients = recipeIngredientsNSSet
 
         Constants.appDelegate.saveContext()
     }

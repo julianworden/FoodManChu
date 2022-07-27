@@ -25,7 +25,9 @@ extension HomeViewController: UITableViewDelegate {
         }
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let recipe = viewModel.fetchedResultsController.object(at: indexPath)
             viewModel.deleteRecipe(recipe: recipe)

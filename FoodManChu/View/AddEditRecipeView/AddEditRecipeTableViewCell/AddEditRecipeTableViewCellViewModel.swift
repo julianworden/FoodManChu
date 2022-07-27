@@ -20,13 +20,15 @@ class AddEditRecipeTableViewCellViewModel {
     @Published var recipeCategory: Category?
 
     init(recipeToEdit: Recipe?) {
+        addNewIngredientsObserver()
+        
         if let recipeToEdit = recipeToEdit {
             self.recipeToEdit = recipeToEdit
             self.recipeName = recipeToEdit.name
             self.recipeDetails = recipeToEdit.details
             self.recipeInstructions = recipeToEdit.instructions
             self.recipePrepTime = Int(recipeToEdit.prepTime)
-//            self.recipeIngredients = recipeToEdit.ingredients
+            self.recipeIngredients = recipeToEdit.ingredientsArray
             self.recipeCategory = recipeToEdit.category
         }
     }
@@ -61,6 +63,19 @@ class AddEditRecipeTableViewCellViewModel {
             self.categories = categories
         } catch {
             throw FetchCategoriesError.categoryFetchError
+        }
+    }
+
+    func addNewIngredientsObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateRecipeIngredients),
+                                               name: Constants.ingredientChosenNotification,
+                                               object: nil)
+    }
+
+    @objc func updateRecipeIngredients(_ notification: NSNotification) {
+        if let ingredients = notification.userInfo?["ingredients"] as? [Ingredient] {
+            self.recipeIngredients = ingredients
         }
     }
 }

@@ -21,6 +21,7 @@ class AddEditRecipeViewController: UIViewController {
     var newRecipeInstructionsSubscriber: AnyCancellable?
     var newRecipePrepTimeSubscriber: AnyCancellable?
     var newRecipeCategorySubscriber: AnyCancellable?
+    var newRecipeIngredientsSubscriber: AnyCancellable?
 
     let tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
 
@@ -38,8 +39,16 @@ class AddEditRecipeViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(AddEditRecipeTableViewCell.self,
-                           forCellReuseIdentifier: Constants.addEditRecipeCellReuseIdentifier)
+        tableView.register(TextFieldTableViewCell.self,
+                           forCellReuseIdentifier: Constants.textFieldCellReuseIdentifier)
+        tableView.register(TextViewTableViewCell.self,
+                           forCellReuseIdentifier: Constants.textViewCellReuseIdentifier)
+        tableView.register(PickerViewTableViewCell.self,
+                           forCellReuseIdentifier: Constants.pickerViewCellReuseIdentifier)
+        tableView.register(LabelTableViewCell.self,
+                           forCellReuseIdentifier: Constants.labelCellReuseIdentifier)
+        tableView.register(LabelWithNavigationTableViewCell.self,
+                           forCellReuseIdentifier: Constants.labelWithNavigationCellReuseIdentifier)
         tableView.keyboardDismissMode = .interactive
     }
 

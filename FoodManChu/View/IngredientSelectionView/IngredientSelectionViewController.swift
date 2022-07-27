@@ -29,7 +29,8 @@ class IngredientSelectionViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(IngredientTableViewViewCell.self, forCellReuseIdentifier: Constants.ingredientCellReuseIdentifier)
+        tableView.register(IngredientTableViewViewCell.self,
+                           forCellReuseIdentifier: Constants.ingredientCellReuseIdentifier)
         tableView.allowsMultipleSelection = true
         tableView.allowsMultipleSelectionDuringEditing = true
     }
