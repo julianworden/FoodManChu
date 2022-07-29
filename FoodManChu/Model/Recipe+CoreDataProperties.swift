@@ -30,6 +30,19 @@ extension Recipe {
         }
     }
 
+    var ingredientNamesArray: [String] {
+        if let set = ingredients as? Set<Ingredient> {
+            let ingredientsArray = Array(set)
+            let ingredientNamesArray = ingredientsArray.map { $0.name! }
+            return ingredientNamesArray
+        } else {
+            return []
+        }
+    }
+
+    var prepTimeAsString: String {
+        String(prepTime)
+    }
 }
 
 // MARK: Generated accessors for ingredients

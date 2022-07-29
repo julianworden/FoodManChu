@@ -20,7 +20,8 @@ class PickerViewTableViewCell: UITableViewCell {
     }
 
     func addAndConfigureCategoryPicker() {
-//        viewModel.generateCategories()
+        viewModel.generateCategories()
+
         do {
             try viewModel.fetchCategories()
         } catch {
@@ -31,7 +32,10 @@ class PickerViewTableViewCell: UITableViewCell {
         categoryPicker.dataSource = self
         if let recipeToEdit = viewModel.recipeToEdit,
            let categoryIndexPosition = viewModel.categories?.firstIndex(of: recipeToEdit.category!) {
-            categoryPicker.selectRow(categoryIndexPosition, inComponent: 0, animated: true)
+            categoryPicker.selectRow(categoryIndexPosition, inComponent: 0, animated: false)
+        } else {
+            viewModel.recipeCategory = viewModel.categories?[0]
+            categoryPicker.selectRow(0, inComponent: 0, animated: false)
         }
 
         contentView.addSubview(categoryPicker)

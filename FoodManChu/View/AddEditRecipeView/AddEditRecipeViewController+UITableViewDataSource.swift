@@ -41,6 +41,8 @@ extension AddEditRecipeViewController: UITableViewDataSource {
         }
     }
 
+    // swiftlint:disable cyclomatic_complexity
+    // swiftlint:disable function_body_length
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath {
         case IndexPath(row: 0, section: 0):
@@ -100,13 +102,14 @@ extension AddEditRecipeViewController: UITableViewDataSource {
                 return cell
             }
         case IndexPath(row: 0, section: 4):
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.labelWithNavigationCellReuseIdentifier,
-                                                        for: indexPath) as? LabelWithNavigationTableViewCell {
+            if let cell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.labelWithNavigationCellReuseIdentifier,
+                for: indexPath
+            ) as? LabelWithNavigationTableViewCell {
                 cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
                 cell.addAndConfigureIngredientsLabel()
                 cell.accessoryType = .disclosureIndicator
                 return cell
-
             }
         case IndexPath(row: 1, section: 4):
             if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.labelCellReuseIdentifier,
@@ -114,10 +117,12 @@ extension AddEditRecipeViewController: UITableViewDataSource {
                 cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
                 cell.addAndConfigureIngredientsListLabel()
                 newRecipeIngredientsSubscriber = cell.viewModel.$recipeIngredients
-                    .sink(receiveValue: { ingredients in
+                    .sink(receiveValue: { [weak self] ingredients in
                         if let ingredients = ingredients {
+                            self?.viewModel.recipeIngredients = ingredients
                             let ingredientNameArray = ingredients.map { $0.name! }
-                            cell.ingredientsListLabel.text = ingredientNameArray.joined(separator: ", ")
+                            let sortedIngredientNameArray = ingredientNameArray.sorted()
+                            cell.ingredientsListLabel.text = sortedIngredientNameArray.joined(separator: ", ")
                             tableView.reloadRows(at: [IndexPath(row: 0, section: 4)], with: .none)
                         }
                     })
@@ -141,10 +146,25 @@ extension AddEditRecipeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 1, 2:
+        switch indexPath {
+        case IndexPath(row: 0, section: 1), IndexPath(row: 0, section: 2):
             return 85
-        case 5:
+        case IndexPath(row: 1, section: 4):
+            return UITableView.automaticDimension
+        case IndexPath(row: 0, section: 5):
+            return 150
+        default:
+            return 44
+        }
+    }
+
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath {
+        case IndexPath(row: 0, section: 1), IndexPath(row: 0, section: 2):
+            return 85
+        case IndexPath(row: 1, section: 4):
+            return UITableView.automaticDimension
+        case IndexPath(row: 0, section: 5):
             return 150
         default:
             return 44

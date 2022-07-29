@@ -13,8 +13,7 @@ extension HomeViewModel: NSFetchedResultsControllerDelegate {
                     didChange anObject: Any,
                     at indexPath: IndexPath?,
                     for type: NSFetchedResultsChangeType,
-                    newIndexPath: IndexPath?
-    ) {
+                    newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             if let indexPath = newIndexPath {

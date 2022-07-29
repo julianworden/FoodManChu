@@ -10,31 +10,27 @@ import Foundation
 
 class IngredientSelectionViewModel: NSObject {
     var fetchedResultsController: NSFetchedResultsController<Ingredient>!
-    var selectedIngredients = [Ingredient]() {
+    var recipeToEdit: Recipe?
+    var ingredientsToEdit: [Ingredient]?
+    var selectedIngredient: Ingredient? {
         didSet {
             NotificationCenter.default.post(name: Constants.ingredientChosenNotification,
                                             object: nil,
-                                            userInfo: ["ingredients": selectedIngredients])
+                                            userInfo: ["ingredient": selectedIngredient!])
         }
     }
 
-    func fetchIngredients() {
-        let fetchRequest = Ingredient.fetchRequest()
-        fetchRequest.sortDescriptors = []
+    @Published var updatedControllerIndexPath: IndexPath?
+    var controllerChangeType: NSFetchedResultsChangeType?
 
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                                                  managedObjectContext: Constants.managedObjectContext,
-                                                                  sectionNameKeyPath: nil,
-                                                                  cacheName: nil)
+    init(recipeToEdit: Recipe?, ingredientsToEdit: [Ingredient]?) {
+        self.recipeToEdit = recipeToEdit
+        self.ingredientsToEdit = ingredientsToEdit
+    }
 
-        fetchedResultsController.delegate = self
-        self.fetchedResultsController = fetchedResultsController
-
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            print(error)
-        }
+    func deleteIngredient(ingredient: Ingredient) {
+        Constants.managedObjectContext.delete(ingredient)
+        Constants.appDelegate.saveContext()
     }
 }
 
@@ -43,66 +39,73 @@ class IngredientSelectionViewModel: NSObject {
 // swiftlint:disable function_body_length
 extension IngredientSelectionViewModel {
     func generateIngredients() {
-        let bananaIngredient = Ingredient(context: Constants.managedObjectContext)
-        bananaIngredient.name = "Bananas"
-        bananaIngredient.isUserCreated = false
+        let hasGeneratedIngredients = UserDefaults.standard.bool(forKey: "hasGeneratedIngredients")
 
-        let strawberryIngredient = Ingredient(context: Constants.managedObjectContext)
-        strawberryIngredient.name = "Strawberries"
-        strawberryIngredient.isUserCreated = false
+        if !hasGeneratedIngredients {
+            let bananaIngredient = Ingredient(context: Constants.managedObjectContext)
+            bananaIngredient.name = "Bananas"
+            bananaIngredient.isUserCreated = false
 
-        let blueberriesIngredient = Ingredient(context: Constants.managedObjectContext)
-        blueberriesIngredient.name = "Blueberries"
-        blueberriesIngredient.isUserCreated = false
+            let strawberryIngredient = Ingredient(context: Constants.managedObjectContext)
+            strawberryIngredient.name = "Strawberries"
+            strawberryIngredient.isUserCreated = false
 
-        let saltIngredient = Ingredient(context: Constants.managedObjectContext)
-        saltIngredient.name = "Salt"
-        saltIngredient.isUserCreated = false
+            let blueberriesIngredient = Ingredient(context: Constants.managedObjectContext)
+            blueberriesIngredient.name = "Blueberries"
+            blueberriesIngredient.isUserCreated = false
 
-        let pepperIngredient = Ingredient(context: Constants.managedObjectContext)
-        pepperIngredient.name = "Pepper"
-        pepperIngredient.isUserCreated = false
+            let saltIngredient = Ingredient(context: Constants.managedObjectContext)
+            saltIngredient.name = "Salt"
+            saltIngredient.isUserCreated = false
 
-        let milkIngredient = Ingredient(context: Constants.managedObjectContext)
-        milkIngredient.name = "Milk"
-        milkIngredient.isUserCreated = false
+            let pepperIngredient = Ingredient(context: Constants.managedObjectContext)
+            pepperIngredient.name = "Pepper"
+            pepperIngredient.isUserCreated = false
 
-        let cheeseIngredient = Ingredient(context: Constants.managedObjectContext)
-        cheeseIngredient.name = "Cheese"
-        cheeseIngredient.isUserCreated = false
+            let milkIngredient = Ingredient(context: Constants.managedObjectContext)
+            milkIngredient.name = "Milk"
+            milkIngredient.isUserCreated = false
 
-        let oliveOilIngredient = Ingredient(context: Constants.managedObjectContext)
-        oliveOilIngredient.name = "Olive Oil"
-        oliveOilIngredient.isUserCreated = false
+            let cheeseIngredient = Ingredient(context: Constants.managedObjectContext)
+            cheeseIngredient.name = "Cheese"
+            cheeseIngredient.isUserCreated = false
 
-        let chickenIngredient = Ingredient(context: Constants.managedObjectContext)
-        chickenIngredient.name = "Chicken"
-        chickenIngredient.isUserCreated = false
+            let oliveOilIngredient = Ingredient(context: Constants.managedObjectContext)
+            oliveOilIngredient.name = "Olive Oil"
+            oliveOilIngredient.isUserCreated = false
 
-        let fishIngredient = Ingredient(context: Constants.managedObjectContext)
-        fishIngredient.name = "Fish"
-        fishIngredient.isUserCreated = false
+            let chickenIngredient = Ingredient(context: Constants.managedObjectContext)
+            chickenIngredient.name = "Chicken"
+            chickenIngredient.isUserCreated = false
 
-        let broccoliIngredient = Ingredient(context: Constants.managedObjectContext)
-        broccoliIngredient.name = "Broccoli"
-        broccoliIngredient.isUserCreated = false
+            let fishIngredient = Ingredient(context: Constants.managedObjectContext)
+            fishIngredient.name = "Fish"
+            fishIngredient.isUserCreated = false
 
-        let celeryIngredient = Ingredient(context: Constants.managedObjectContext)
-        celeryIngredient.name = "Celery"
-        celeryIngredient.isUserCreated = false
+            let broccoliIngredient = Ingredient(context: Constants.managedObjectContext)
+            broccoliIngredient.name = "Broccoli"
+            broccoliIngredient.isUserCreated = false
 
-        let carrotIngredient = Ingredient(context: Constants.managedObjectContext)
-        carrotIngredient.name = "Carrots"
-        carrotIngredient.isUserCreated = false
+            let celeryIngredient = Ingredient(context: Constants.managedObjectContext)
+            celeryIngredient.name = "Celery"
+            celeryIngredient.isUserCreated = false
 
-        let tomatoIngredient = Ingredient(context: Constants.managedObjectContext)
-        tomatoIngredient.name = "Tomatoes"
-        tomatoIngredient.isUserCreated = false
+            let carrotIngredient = Ingredient(context: Constants.managedObjectContext)
+            carrotIngredient.name = "Carrots"
+            carrotIngredient.isUserCreated = false
 
-        let flourIngredient = Ingredient(context: Constants.managedObjectContext)
-        flourIngredient.name = "Flour"
-        flourIngredient.isUserCreated = false
+            let tomatoIngredient = Ingredient(context: Constants.managedObjectContext)
+            tomatoIngredient.name = "Tomatoes"
+            tomatoIngredient.isUserCreated = false
 
-        Constants.appDelegate.saveContext()
+            let flourIngredient = Ingredient(context: Constants.managedObjectContext)
+            flourIngredient.name = "Flour"
+            flourIngredient.isUserCreated = false
+
+            Constants.appDelegate.saveContext()
+            UserDefaults.standard.set(true, forKey: "hasGeneratedIngredients")
+        } else {
+            return
+        }
     }
 }

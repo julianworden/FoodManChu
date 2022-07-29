@@ -16,12 +16,12 @@ class AddEditRecipeTableViewCellViewModel {
     @Published var recipeDetails: String?
     @Published var recipeInstructions: String?
     @Published var recipePrepTime: Int?
-    @Published var recipeIngredients: [Ingredient]?
+    @Published var recipeIngredients: [Ingredient]? = [Ingredient]()
     @Published var recipeCategory: Category?
 
     init(recipeToEdit: Recipe?) {
         addNewIngredientsObserver()
-        
+
         if let recipeToEdit = recipeToEdit {
             self.recipeToEdit = recipeToEdit
             self.recipeName = recipeToEdit.name
@@ -34,22 +34,29 @@ class AddEditRecipeTableViewCellViewModel {
     }
 
     func generateCategories() {
-        let meatCategory = Category(context: Constants.managedObjectContext)
-        meatCategory.name = "Meat"
+        let hasGeneratedCategories = UserDefaults.standard.bool(forKey: "hasGeneratedCategories")
 
-        let vegetarianCategory = Category(context: Constants.managedObjectContext)
-        vegetarianCategory.name = "Vegetarian"
+        if !hasGeneratedCategories {
+            let meatCategory = Category(context: Constants.managedObjectContext)
+            meatCategory.name = "Meat"
 
-        let veganCategory = Category(context: Constants.managedObjectContext)
-        veganCategory.name = "Vegan"
+            let vegetarianCategory = Category(context: Constants.managedObjectContext)
+            vegetarianCategory.name = "Vegetarian"
 
-        let paleoCategory = Category(context: Constants.managedObjectContext)
-        paleoCategory.name = "Paleo"
+            let veganCategory = Category(context: Constants.managedObjectContext)
+            veganCategory.name = "Vegan"
 
-        let ketoCategory = Category(context: Constants.managedObjectContext)
-        ketoCategory.name = "Keto"
+            let paleoCategory = Category(context: Constants.managedObjectContext)
+            paleoCategory.name = "Paleo"
 
-        Constants.appDelegate.saveContext()
+            let ketoCategory = Category(context: Constants.managedObjectContext)
+            ketoCategory.name = "Keto"
+
+            Constants.appDelegate.saveContext()
+            UserDefaults.standard.set(true, forKey: "hasGeneratedCategories")
+        } else {
+            return
+        }
     }
 
     func fetchCategories() throws {
@@ -74,8 +81,14 @@ class AddEditRecipeTableViewCellViewModel {
     }
 
     @objc func updateRecipeIngredients(_ notification: NSNotification) {
-        if let ingredients = notification.userInfo?["ingredients"] as? [Ingredient] {
-            self.recipeIngredients = ingredients
+        if let ingredient = notification.userInfo?["ingredient"] as? Ingredient {
+            if recipeIngredients!.contains(ingredient) {
+                if let index = recipeIngredients?.firstIndex(of: ingredient) {
+                    recipeIngredients?.remove(at: index)
+                }
+            } else {
+                recipeIngredients!.append(ingredient)
+            }
         }
     }
 }

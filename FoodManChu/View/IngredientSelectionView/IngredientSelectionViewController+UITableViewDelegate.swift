@@ -14,19 +14,52 @@ extension IngredientSelectionViewController: UITableViewDelegate {
         let selectedIngredient = viewModel.fetchedResultsController.object(at: indexPath)
 
         if cell!.isSelected && cell!.accessoryType == .none {
-            viewModel.selectedIngredients.append(selectedIngredient)
+            viewModel.selectedIngredient = selectedIngredient
 
             cell!.isSelected = false
             cell!.accessoryType = .checkmark
         } else if cell!.isSelected && cell!.accessoryType == .checkmark {
-            if let deselectedIngredientIndex = viewModel.selectedIngredients.firstIndex(of: selectedIngredient) {
-                viewModel.selectedIngredients.remove(at: deselectedIngredientIndex)
-            }
+            viewModel.selectedIngredient = selectedIngredient
 
             cell!.isSelected = false
             cell!.accessoryType = .none
         }
+    }
 
-//        tableView.deselectRow(at: indexPath, animated: true)
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        let status = navigationItem.leftBarButtonItem?.title
+
+        if status == "Edit" {
+            tableView.beginUpdates()
+            tableView.isEditing = true
+            navigationItem.leftBarButtonItem?.title = "Done"
+            tableView.endUpdates()
+        } else if status == "Done" {
+            tableView.beginUpdates()
+            tableView.isEditing = false
+            navigationItem.leftBarButtonItem?.title = "Edit"
+            tableView.endUpdates()
+        }
+    }
+
+    func tableView(_ tableView: UITableView,
+                   editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        let ingredient = viewModel.fetchedResultsController.object(at: indexPath)
+
+        if ingredient.isUserCreated {
+            return .delete
+        } else {
+            return .none
+        }
+    }
+
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let ingredient = viewModel.fetchedResultsController.object(at: indexPath)
+            viewModel.selectedIngredient = ingredient
+            viewModel.deleteIngredient(ingredient: ingredient)
+        }
     }
 }

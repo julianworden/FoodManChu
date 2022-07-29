@@ -39,6 +39,7 @@ extension HomeViewController: UITableViewDataSource {
 
     func configureCell(_ cell: RecipeTableViewCell, indexPath: IndexPath) {
         let recipe = viewModel.fetchedResultsController.object(at: indexPath)
+
         cell.viewModel = RecipeTableViewCellViewModel(recipe: recipe)
         cell.buttonDelegate = self
         cell.selectionStyle = .none

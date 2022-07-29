@@ -29,7 +29,7 @@ extension IngredientSelectionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.ingredientCellReuseIdentifier,
                                                  for: indexPath)
-        if let cell = cell as? IngredientTableViewViewCell {
+        if let cell = cell as? IngredientTableViewCell {
             configureCell(cell, indexPath: indexPath)
             return cell
         } else {
@@ -37,9 +37,21 @@ extension IngredientSelectionViewController: UITableViewDataSource {
         }
     }
 
-    func configureCell(_ cell: IngredientTableViewViewCell, indexPath: IndexPath) {
+    func configureCell(_ cell: IngredientTableViewCell, indexPath: IndexPath) {
         var contentConfiguration = cell.defaultContentConfiguration()
         let ingredient = viewModel.fetchedResultsController.object(at: indexPath)
+
+        if let recipeToEdit = viewModel.recipeToEdit {
+            if recipeToEdit.ingredientsArray.contains(ingredient) {
+                cell.accessoryType = .checkmark
+            }
+        }
+
+        if let ingredientsToEdit = viewModel.ingredientsToEdit {
+            if ingredientsToEdit.contains(ingredient) {
+                cell.accessoryType = .checkmark
+            }
+        }
 
         contentConfiguration.text = ingredient.name
         cell.contentConfiguration = contentConfiguration

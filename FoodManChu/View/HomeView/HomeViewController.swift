@@ -13,11 +13,11 @@ class HomeViewController: UIViewController {
     var subscribers = Set<AnyCancellable>()
 
     let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //        viewModel.generateExampleRecipe()
         configureSubscribers()
         viewModel.fetchRecipes()
         configureViews()
@@ -27,12 +27,19 @@ class HomeViewController: UIViewController {
     func configureViews() {
         view.backgroundColor = .white
         title = "Recipes"
-        navigationItem.largeTitleDisplayMode = .always
+        definesPresentationContext = true
         let addRecipeButton = UIBarButtonItem(barButtonSystemItem: .add,
                                               target: self,
                                               action: #selector(addRecipeTapped))
         navigationItem.rightBarButtonItem = addRecipeButton
         navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.searchController = searchController
+        navigationItem.largeTitleDisplayMode = .always
+
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Recipes"
 
         tableView.delegate = self
         tableView.dataSource = self

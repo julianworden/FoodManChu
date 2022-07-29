@@ -20,6 +20,7 @@ struct Constants {
     static let labelCellReuseIdentifier = "LabelCell"
     static let labelWithNavigationCellReuseIdentifier = "LabelWithNavigationCell"
     static let ingredientCellReuseIdentifier = "IngredientCell"
+    static let addIngredientCellReuseIdentifier = "AddEditIngredientCell"
 
     static let ingredientChosenNotificationKey = "IngredientsChosen"
     static let ingredientChosenNotification = Notification.Name(ingredientChosenNotificationKey)

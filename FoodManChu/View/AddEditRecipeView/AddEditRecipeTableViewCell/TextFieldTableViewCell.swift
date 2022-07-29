@@ -57,7 +57,6 @@ class TextFieldTableViewCell: UITableViewCell {
         ])
     }
 
-
     @objc func nameTextFieldChanged() {
         viewModel.recipeName = nameTextField.text
     }
