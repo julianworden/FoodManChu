@@ -23,7 +23,9 @@ extension HomeViewController: RecipeTableViewCellButtonDelegate {
     }
 
     func receipeTableViewCell(_ cell: RecipeTableViewCell, detailsButtonWasTapped: Bool) {
-    // TODO: Add DetailsViewController push
+        let recipeDetailsViewController = RecipeDetailsViewController()
+        recipeDetailsViewController.viewModel = RecipeDetailsViewModel(recipe: cell.viewModel.recipe)
+        navigationController?.pushViewController(recipeDetailsViewController, animated: true)
         return
     }
 }

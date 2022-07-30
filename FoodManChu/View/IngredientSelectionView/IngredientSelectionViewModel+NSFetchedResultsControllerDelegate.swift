@@ -9,11 +9,13 @@ import CoreData
 import Foundation
 
 extension IngredientSelectionViewModel: NSFetchedResultsControllerDelegate {
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChange anObject: Any,
-                    at indexPath: IndexPath?,
-                    for type: NSFetchedResultsChangeType,
-                    newIndexPath: IndexPath?) {
+    func controller(
+        _ controller: NSFetchedResultsController<NSFetchRequestResult>,
+        didChange anObject: Any,
+        at indexPath: IndexPath?,
+        for type: NSFetchedResultsChangeType,
+        newIndexPath: IndexPath?
+    ) {
         switch type {
         case .insert:
             if let indexPath = newIndexPath {
@@ -46,10 +48,12 @@ extension IngredientSelectionViewModel: NSFetchedResultsControllerDelegate {
         let userCreatedSort = NSSortDescriptor(key: "isUserCreated", ascending: false)
         fetchRequest.sortDescriptors = [userCreatedSort, nameSort]
 
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                                                  managedObjectContext: Constants.managedObjectContext,
-                                                                  sectionNameKeyPath: nil,
-                                                                  cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: Constants.managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
 
         fetchedResultsController.delegate = self
         self.fetchedResultsController = fetchedResultsController

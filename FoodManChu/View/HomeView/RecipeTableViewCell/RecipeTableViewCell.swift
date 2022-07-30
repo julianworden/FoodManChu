@@ -54,10 +54,15 @@ class RecipeTableViewCell: UITableViewCell {
         editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
 
         detailsButton.setTitle("Details", for: .normal)
+        detailsButton.addTarget(self, action: #selector(detailsButtonTapped), for: .touchUpInside)
     }
 
     @objc func editButtonTapped() {
         buttonDelegate?.recipeTableViewCell(self, editButtonWasTapped: true)
+    }
+
+    @objc func detailsButtonTapped() {
+        buttonDelegate?.receipeTableViewCell(self, detailsButtonWasTapped: true)
     }
 }
 

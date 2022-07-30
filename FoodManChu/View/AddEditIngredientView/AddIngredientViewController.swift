@@ -26,10 +26,12 @@ class AddIngredientViewController: UIViewController {
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
         navigationItem.rightBarButtonItem = saveButton
 
-        tableView.register(AddIngredientTableViewCell.self,
-                           forCellReuseIdentifier: Constants.addIngredientCellReuseIdentifier)
-        tableView.delegate = self
+        tableView.register(
+            AddIngredientTableViewCell.self,
+            forCellReuseIdentifier: Constants.addIngredientCellReuseIdentifier
+        )
         tableView.dataSource = self
+        tableView.delegate = self
     }
 
     @objc func saveTapped() {

@@ -39,16 +39,26 @@ class AddEditRecipeViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(TextFieldTableViewCell.self,
-                           forCellReuseIdentifier: Constants.textFieldCellReuseIdentifier)
-        tableView.register(TextViewTableViewCell.self,
-                           forCellReuseIdentifier: Constants.textViewCellReuseIdentifier)
-        tableView.register(PickerViewTableViewCell.self,
-                           forCellReuseIdentifier: Constants.pickerViewCellReuseIdentifier)
-        tableView.register(LabelTableViewCell.self,
-                           forCellReuseIdentifier: Constants.labelCellReuseIdentifier)
-        tableView.register(LabelWithNavigationTableViewCell.self,
-                           forCellReuseIdentifier: Constants.labelWithNavigationCellReuseIdentifier)
+        tableView.register(
+            TextFieldTableViewCell.self,
+            forCellReuseIdentifier: Constants.textFieldCellReuseIdentifier
+        )
+        tableView.register(
+            TextViewTableViewCell.self,
+            forCellReuseIdentifier: Constants.textViewCellReuseIdentifier
+        )
+        tableView.register(
+            PickerViewTableViewCell.self,
+            forCellReuseIdentifier: Constants.pickerViewCellReuseIdentifier
+        )
+        tableView.register(
+            LabelTableViewCell.self,
+            forCellReuseIdentifier: Constants.labelCellReuseIdentifier
+        )
+        tableView.register(
+            LabelWithNavigationTableViewCell.self,
+            forCellReuseIdentifier: Constants.labelWithNavigationCellReuseIdentifier
+        )
         tableView.keyboardDismissMode = .interactive
     }
 

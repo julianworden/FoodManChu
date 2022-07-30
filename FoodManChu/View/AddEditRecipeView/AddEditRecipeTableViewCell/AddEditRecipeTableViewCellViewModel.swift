@@ -19,6 +19,15 @@ class AddEditRecipeTableViewCellViewModel {
     @Published var recipeIngredients: [Ingredient]? = [Ingredient]()
     @Published var recipeCategory: Category?
 
+    var recipeIngredientNamesArray: [String] {
+        if let recipeIngredients = recipeIngredients {
+            let ingredientNamesArray = recipeIngredients.map { $0.name! }
+            return ingredientNamesArray.sorted()
+        } else {
+            return []
+        }
+    }
+
     init(recipeToEdit: Recipe?) {
         addNewIngredientsObserver()
 
@@ -34,7 +43,7 @@ class AddEditRecipeTableViewCellViewModel {
     }
 
     func generateCategories() {
-        let hasGeneratedCategories = UserDefaults.standard.bool(forKey: "hasGeneratedCategories")
+        let hasGeneratedCategories = UserDefaults.standard.bool(forKey: Constants.userHasGeneratedCategoriesKey)
 
         if !hasGeneratedCategories {
             let meatCategory = Category(context: Constants.managedObjectContext)
@@ -53,7 +62,7 @@ class AddEditRecipeTableViewCellViewModel {
             ketoCategory.name = "Keto"
 
             Constants.appDelegate.saveContext()
-            UserDefaults.standard.set(true, forKey: "hasGeneratedCategories")
+            UserDefaults.standard.set(true, forKey: Constants.userHasGeneratedCategoriesKey)
         } else {
             return
         }
@@ -74,10 +83,12 @@ class AddEditRecipeTableViewCellViewModel {
     }
 
     func addNewIngredientsObserver() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateRecipeIngredients),
-                                               name: Constants.ingredientChosenNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateRecipeIngredients),
+            name: Constants.ingredientChosenNotification,
+            object: nil
+        )
     }
 
     @objc func updateRecipeIngredients(_ notification: NSNotification) {

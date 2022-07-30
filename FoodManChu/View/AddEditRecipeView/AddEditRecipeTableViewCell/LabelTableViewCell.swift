@@ -11,12 +11,16 @@ class LabelTableViewCell: UITableViewCell {
     var viewModel: AddEditRecipeTableViewCellViewModel!
     let ingredientsListLabel = UILabel()
 
+    // TODO: Keep ingredients list from disappearing when cell is dequeued
     func addAndConfigureIngredientsListLabel() {
         if let ingredients = viewModel.recipeToEdit?.ingredientsArray {
             let ingredientNameArray = ingredients.map { $0.name! }
             let sortedIngredientNameArray = ingredientNameArray.sorted()
             ingredientsListLabel.text = sortedIngredientNameArray.joined(separator: ", ")
             ingredientsListLabel.isHidden = false
+        } else {
+            ingredientsListLabel.text = viewModel.recipeIngredientNamesArray.joined(separator: ", ")
+            print("RECIPE INGREDIENTS NAME ARRAY IS \(viewModel.recipeIngredientNamesArray)")
         }
 
         ingredientsListLabel.textAlignment = .left

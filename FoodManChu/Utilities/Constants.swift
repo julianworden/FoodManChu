@@ -10,9 +10,11 @@ import UIKit
 
 // swiftlint:disable force_cast
 struct Constants {
+    // Core Data
     static let appDelegate = UIApplication.shared.delegate as! AppDelegate
     static let managedObjectContext = appDelegate.persistentContainer.viewContext
 
+    // Cell Reuse Identifiers
     static let homeCellReuseIdentifier = "HomeCell"
     static let textFieldCellReuseIdentifier = "TextFieldCell"
     static let textViewCellReuseIdentifier = "TextViewCell"
@@ -22,10 +24,11 @@ struct Constants {
     static let ingredientCellReuseIdentifier = "IngredientCell"
     static let addIngredientCellReuseIdentifier = "AddEditIngredientCell"
 
+    // Notifications
     static let ingredientChosenNotificationKey = "IngredientsChosen"
     static let ingredientChosenNotification = Notification.Name(ingredientChosenNotificationKey)
-    static let notifyIngredientCellNotificationKey = "NotifyIngredientCell"
-    static let notifyIngredientCellNotification = Notification.Name(notifyIngredientCellNotificationKey)
-    static let reloadIngredientsListNotificationKey = "ReloadIngredientsList"
-    static let reloadIngredientsListNotification = Notification.Name(reloadIngredientsListNotificationKey)
+
+    // UserDefaults
+    static let userHasGeneratedCategoriesKey = "UserHasGeneratedCategories"
+    static let userHasGeneratedIngredientsKey = "UserHasGeneratedIngredients"
 }

@@ -46,8 +46,10 @@ extension AddEditRecipeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath {
         case IndexPath(row: 0, section: 0):
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.textFieldCellReuseIdentifier,
-                                                        for: indexPath) as? TextFieldTableViewCell {
+            if let cell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.textFieldCellReuseIdentifier,
+                for: indexPath
+            ) as? TextFieldTableViewCell {
                 cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
                 cell.addAndConfigureNameTextField()
                 cell.selectionStyle = .none
@@ -60,8 +62,10 @@ extension AddEditRecipeViewController: UITableViewDataSource {
                 return cell
             }
         case IndexPath(row: 0, section: 1):
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.textViewCellReuseIdentifier,
-                                                        for: indexPath) as? TextViewTableViewCell {
+            if let cell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.textViewCellReuseIdentifier,
+                for: indexPath
+            ) as? TextViewTableViewCell {
                 cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
                 cell.addAndConfigureDescriptionTextView()
                 cell.selectionStyle = .none
@@ -74,8 +78,10 @@ extension AddEditRecipeViewController: UITableViewDataSource {
                 return cell
             }
         case IndexPath(row: 0, section: 2):
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.textViewCellReuseIdentifier,
-                                                        for: indexPath) as? TextViewTableViewCell {
+            if let cell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.textViewCellReuseIdentifier,
+                for: indexPath
+            ) as? TextViewTableViewCell {
                 cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
                 cell.addAndConfigureInstructionsTextView()
                 cell.selectionStyle = .none
@@ -88,8 +94,10 @@ extension AddEditRecipeViewController: UITableViewDataSource {
                 return cell
             }
         case IndexPath(row: 0, section: 3):
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.textFieldCellReuseIdentifier,
-                                                        for: indexPath) as? TextFieldTableViewCell {
+            if let cell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.textFieldCellReuseIdentifier,
+                for: indexPath
+            ) as? TextFieldTableViewCell {
                 cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
                 cell.addAndConfigurePrepTimeTextField()
                 cell.selectionStyle = .none
@@ -112,8 +120,10 @@ extension AddEditRecipeViewController: UITableViewDataSource {
                 return cell
             }
         case IndexPath(row: 1, section: 4):
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.labelCellReuseIdentifier,
-                                                        for: indexPath) as? LabelTableViewCell {
+            if let cell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.labelCellReuseIdentifier,
+                for: indexPath
+            ) as? LabelTableViewCell {
                 cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
                 cell.addAndConfigureIngredientsListLabel()
                 newRecipeIngredientsSubscriber = cell.viewModel.$recipeIngredients
@@ -129,8 +139,10 @@ extension AddEditRecipeViewController: UITableViewDataSource {
                 return cell
             }
         case IndexPath(row: 0, section: 5):
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.pickerViewCellReuseIdentifier,
-                                                        for: indexPath) as? PickerViewTableViewCell {
+            if let cell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.pickerViewCellReuseIdentifier,
+                for: indexPath
+            ) as? PickerViewTableViewCell {
                 cell.viewModel = AddEditRecipeTableViewCellViewModel(recipeToEdit: viewModel.recipeToEdit)
                 cell.addAndConfigureCategoryPicker()
                 newRecipeCategorySubscriber = cell.viewModel.$recipeCategory
@@ -147,8 +159,10 @@ extension AddEditRecipeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath {
-        case IndexPath(row: 0, section: 1), IndexPath(row: 0, section: 2):
+        case IndexPath(row: 0, section: 1):
             return 85
+        case IndexPath(row: 0, section: 2):
+            return 150
         case IndexPath(row: 1, section: 4):
             return UITableView.automaticDimension
         case IndexPath(row: 0, section: 5):
@@ -160,8 +174,10 @@ extension AddEditRecipeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath {
-        case IndexPath(row: 0, section: 1), IndexPath(row: 0, section: 2):
+        case IndexPath(row: 0, section: 1):
             return 85
+        case IndexPath(row: 0, section: 2):
+            return 150
         case IndexPath(row: 1, section: 4):
             return UITableView.automaticDimension
         case IndexPath(row: 0, section: 5):

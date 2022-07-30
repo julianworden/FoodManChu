@@ -29,19 +29,25 @@ class IngredientSelectionViewController: UIViewController {
     func configureViews() {
         view.backgroundColor = .white
         title = "Ingredients"
-        let addIngredientButton = UIBarButtonItem(barButtonSystemItem: .add,
-                                                  target: self,
-                                                  action: #selector(addIngredientButtonTapped))
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
-                                         target: self,
-                                         action: #selector(doneButtonTapped))
+        let addIngredientButton = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addIngredientButtonTapped)
+        )
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(doneButtonTapped)
+        )
         navigationItem.rightBarButtonItems = [doneButton, addIngredientButton]
         navigationItem.leftBarButtonItem = editButtonItem
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(IngredientTableViewCell.self,
-                           forCellReuseIdentifier: Constants.ingredientCellReuseIdentifier)
+        tableView.register(
+            IngredientTableViewCell.self,
+            forCellReuseIdentifier: Constants.ingredientCellReuseIdentifier
+        )
     }
 
     @objc func addIngredientButtonTapped() {

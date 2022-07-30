@@ -21,10 +21,10 @@ class TextViewTableViewCell: UITableViewCell {
     }
 
     func addAndConfigureDescriptionTextView() {
-        detailsTextView.text = viewModel.recipeDetails
+        if detailsTextView.text == nil || viewModel.recipeDetails != nil {
+            detailsTextView.text = viewModel.recipeDetails
+        }
         detailsTextView.font = .systemFont(ofSize: 18)
-        detailsTextView.textContainer.maximumNumberOfLines = 3
-        detailsTextView.isScrollEnabled = false
         detailsTextView.delegate = self
 
         contentView.addSubview(detailsTextView)
@@ -40,14 +40,17 @@ class TextViewTableViewCell: UITableViewCell {
     }
 
     func addAndConfigureInstructionsTextView() {
+        if instructionsTextView.text == nil || viewModel.recipeInstructions != nil {
+            instructionsTextView.text = viewModel.recipeInstructions
+        }
         instructionsTextView.text = viewModel.recipeInstructions
         instructionsTextView.font = .systemFont(ofSize: 18)
-        instructionsTextView.textContainer.maximumNumberOfLines = 3
-        instructionsTextView.isScrollEnabled = false
         instructionsTextView.delegate = self
-        instructionsTextView.refreshControl?.addTarget(self,
-                                                       action: #selector(instructionsTextViewChanged),
-                                                       for: .editingChanged)
+        instructionsTextView.refreshControl?.addTarget(
+            self,
+            action: #selector(instructionsTextViewChanged),
+            for: .editingChanged
+        )
 
         contentView.addSubview(instructionsTextView)
 

@@ -19,6 +19,7 @@ class PickerViewTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // TODO: Keep selectedCategory from disappearing when cell is dequeued
     func addAndConfigureCategoryPicker() {
         viewModel.generateCategories()
 

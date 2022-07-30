@@ -22,7 +22,11 @@ class TextFieldTableViewCell: UITableViewCell {
 
     func addAndConfigureNameTextField() {
         nameTextField.placeholder = "Recipe Name"
-        nameTextField.text = viewModel.recipeName
+
+        // This keeps text from being erased when cell is dequeued
+        if nameTextField.text == nil || viewModel.recipeName != nil {
+            nameTextField.text = viewModel.recipeName
+        }
         nameTextField.addTarget(self, action: #selector(nameTextFieldChanged), for: .editingChanged)
 
         contentView.addSubview(nameTextField)
@@ -38,8 +42,10 @@ class TextFieldTableViewCell: UITableViewCell {
     }
 
     func addAndConfigurePrepTimeTextField() {
-        if let recipePrepTime = viewModel.recipePrepTime {
-            prepTimeTextField.text = String(recipePrepTime)
+
+        // This keeps text from being erased when cell is dequeued
+        if prepTimeTextField.text == nil || viewModel.recipePrepTime != nil {
+            prepTimeTextField.text = String(viewModel.recipePrepTime ?? 0)
         }
         prepTimeTextField.keyboardType = .decimalPad
         prepTimeTextField.placeholder = "Recipe Prep Time"

@@ -43,7 +43,10 @@ class AddEditRecipeViewModel {
               let recipeInstructions = recipeInstructions,
               let recipePrepTime = recipePrepTime,
               let recipeCategory = recipeCategory,
-              let recipeIngredients = recipeIngredients else { return }
+              let recipeIngredients = recipeIngredients else {
+                // TODO: Add Error Handling for empty textfields
+                return
+            }
 
         recipe.name = recipeName
         recipe.details = recipeDetails

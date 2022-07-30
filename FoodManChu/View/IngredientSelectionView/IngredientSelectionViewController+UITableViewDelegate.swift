@@ -42,8 +42,10 @@ extension IngredientSelectionViewController: UITableViewDelegate {
         }
     }
 
-    func tableView(_ tableView: UITableView,
-                   editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    func tableView(
+        _ tableView: UITableView,
+        editingStyleForRowAt indexPath: IndexPath
+    ) -> UITableViewCell.EditingStyle {
         let ingredient = viewModel.fetchedResultsController.object(at: indexPath)
 
         if ingredient.isUserCreated {
@@ -53,9 +55,11 @@ extension IngredientSelectionViewController: UITableViewDelegate {
         }
     }
 
-    func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
         if editingStyle == .delete {
             let ingredient = viewModel.fetchedResultsController.object(at: indexPath)
             viewModel.selectedIngredient = ingredient

@@ -14,9 +14,11 @@ class IngredientSelectionViewModel: NSObject {
     var ingredientsToEdit: [Ingredient]?
     var selectedIngredient: Ingredient? {
         didSet {
-            NotificationCenter.default.post(name: Constants.ingredientChosenNotification,
-                                            object: nil,
-                                            userInfo: ["ingredient": selectedIngredient!])
+            NotificationCenter.default.post(
+                name: Constants.ingredientChosenNotification,
+                object: nil,
+                userInfo: ["ingredient": selectedIngredient!]
+            )
         }
     }
 
@@ -39,7 +41,7 @@ class IngredientSelectionViewModel: NSObject {
 // swiftlint:disable function_body_length
 extension IngredientSelectionViewModel {
     func generateIngredients() {
-        let hasGeneratedIngredients = UserDefaults.standard.bool(forKey: "hasGeneratedIngredients")
+        let hasGeneratedIngredients = UserDefaults.standard.bool(forKey: Constants.userHasGeneratedIngredientsKey)
 
         if !hasGeneratedIngredients {
             let bananaIngredient = Ingredient(context: Constants.managedObjectContext)
@@ -103,7 +105,7 @@ extension IngredientSelectionViewModel {
             flourIngredient.isUserCreated = false
 
             Constants.appDelegate.saveContext()
-            UserDefaults.standard.set(true, forKey: "hasGeneratedIngredients")
+            UserDefaults.standard.set(true, forKey: Constants.userHasGeneratedIngredientsKey)
         } else {
             return
         }

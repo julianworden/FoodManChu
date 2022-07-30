@@ -14,8 +14,10 @@ extension AddIngredientViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.addIngredientCellReuseIdentifier,
-                                                    for: indexPath) as? AddIngredientTableViewCell {
+        if let cell = tableView.dequeueReusableCell(
+            withIdentifier: Constants.addIngredientCellReuseIdentifier,
+            for: indexPath
+        ) as? AddIngredientTableViewCell {
             newIngredientSubscriber = cell.viewModel.$ingredientName
                 .sink(receiveValue: { [weak self] ingredientName in
                     if let ingredientName = ingredientName {

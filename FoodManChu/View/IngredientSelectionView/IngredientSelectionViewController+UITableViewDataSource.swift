@@ -27,8 +27,9 @@ extension IngredientSelectionViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.ingredientCellReuseIdentifier,
-                                                 for: indexPath)
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: Constants.ingredientCellReuseIdentifier,
+            for: indexPath)
         if let cell = cell as? IngredientTableViewCell {
             configureCell(cell, indexPath: indexPath)
             return cell
