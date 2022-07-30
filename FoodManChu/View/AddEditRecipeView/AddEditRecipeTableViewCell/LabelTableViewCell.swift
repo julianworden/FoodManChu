@@ -20,7 +20,6 @@ class LabelTableViewCell: UITableViewCell {
             ingredientsListLabel.isHidden = false
         } else {
             ingredientsListLabel.text = viewModel.recipeIngredientNamesArray.joined(separator: ", ")
-            print("RECIPE INGREDIENTS NAME ARRAY IS \(viewModel.recipeIngredientNamesArray)")
         }
 
         ingredientsListLabel.textAlignment = .left

@@ -12,12 +12,14 @@ extension HomeViewController: RecipeTableViewCellButtonDelegate {
     func recipeTableViewCell(_ cell: RecipeTableViewCell, editButtonWasTapped: Bool) {
         if editButtonWasTapped {
             let addEditRecipeViewController = AddEditRecipeViewController()
+            let addEditRecipeViewModel = AddEditRecipeViewModel(recipeToEdit: cell.viewModel.recipe)
             let addEditRecipeNavigationController = UINavigationController(
                 rootViewController: addEditRecipeViewController
             )
 
+            addEditRecipeViewModel.recipeFormValidationDelegate = addEditRecipeViewController
+            addEditRecipeViewController.viewModel = addEditRecipeViewModel
             addEditRecipeViewController.title = "Edit Recipe"
-            addEditRecipeViewController.viewModel = AddEditRecipeViewModel(recipeToEdit: cell.viewModel.recipe)
             present(addEditRecipeNavigationController, animated: true)
         }
     }

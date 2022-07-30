@@ -9,6 +9,7 @@ import Foundation
 
 class AddEditRecipeViewModel {
     var recipeToEdit: Recipe?
+    weak var recipeFormValidationDelegate: RecipeFormValidationDelegate?
 
     var recipeName: String?
     var recipeDetails: String?
@@ -38,15 +39,15 @@ class AddEditRecipeViewModel {
             recipe = Recipe(context: Constants.managedObjectContext)
         }
 
-            guard let recipeName = recipeName,
+        guard let recipeName = recipeName,
               let recipeDetails = recipeDetails,
               let recipeInstructions = recipeInstructions,
               let recipePrepTime = recipePrepTime,
               let recipeCategory = recipeCategory,
               let recipeIngredients = recipeIngredients else {
-                // TODO: Add Error Handling for empty textfields
-                return
-            }
+            recipeFormValidationDelegate?.viewModel(self, saveFailed: true)
+            return
+        }
 
         recipe.name = recipeName
         recipe.details = recipeDetails

@@ -30,6 +30,8 @@
 		AB6F9A9E28909531009D2E93 /* PickerViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F9A9D28909531009D2E93 /* PickerViewTableViewCell.swift */; };
 		AB6F9AA02890957B009D2E93 /* LabelWithNavigationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F9A9F2890957B009D2E93 /* LabelWithNavigationTableViewCell.swift */; };
 		AB6F9AA228909581009D2E93 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F9AA128909581009D2E93 /* LabelTableViewCell.swift */; };
+		AB95939B28957EE500890A60 /* RecipeFormValidationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95939A28957EE500890A60 /* RecipeFormValidationDelegate.swift */; };
+		AB95939D28957FA400890A60 /* AddEditRecipeViewController+RecipeFormValidationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95939C28957FA400890A60 /* AddEditRecipeViewController+RecipeFormValidationDelegate.swift */; };
 		ABA49D07288AE10F00A32D2E /* Recipe+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D01288AE10F00A32D2E /* Recipe+CoreDataClass.swift */; };
 		ABA49D08288AE10F00A32D2E /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D02288AE10F00A32D2E /* Recipe+CoreDataProperties.swift */; };
 		ABA49D0B288AE10F00A32D2E /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA49D05288AE10F00A32D2E /* Category+CoreDataClass.swift */; };
@@ -86,6 +88,8 @@
 		AB6F9A9D28909531009D2E93 /* PickerViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewTableViewCell.swift; sourceTree = "<group>"; };
 		AB6F9A9F2890957B009D2E93 /* LabelWithNavigationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithNavigationTableViewCell.swift; sourceTree = "<group>"; };
 		AB6F9AA128909581009D2E93 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
+		AB95939A28957EE500890A60 /* RecipeFormValidationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFormValidationDelegate.swift; sourceTree = "<group>"; };
+		AB95939C28957FA400890A60 /* AddEditRecipeViewController+RecipeFormValidationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEditRecipeViewController+RecipeFormValidationDelegate.swift"; sourceTree = "<group>"; };
 		ABA49D01288AE10F00A32D2E /* Recipe+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ABA49D02288AE10F00A32D2E /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ABA49D05288AE10F00A32D2E /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -245,8 +249,10 @@
 			children = (
 				ABA49D18288AE7AB00A32D2E /* AddEditRecipeViewController.swift */,
 				ABED4723288C2E260032DDF2 /* AddEditRecipeViewModel.swift */,
+				AB95939A28957EE500890A60 /* RecipeFormValidationDelegate.swift */,
 				ABED4728288C31370032DDF2 /* AddEditRecipeViewController+UITableViewDataSource.swift */,
 				ABED472A288C31430032DDF2 /* AddEditRecipeViewController+UITableViewDelegate.swift */,
+				AB95939C28957FA400890A60 /* AddEditRecipeViewController+RecipeFormValidationDelegate.swift */,
 				ABED472C288C31B10032DDF2 /* AddEditRecipeTableViewCell */,
 			);
 			path = AddEditRecipeView;
@@ -399,6 +405,7 @@
 				AB3D3A032891DE5A00478B19 /* AddIngredientTableViewCellViewModel.swift in Sources */,
 				ABA49D10288AE52C00A32D2E /* HomeViewModel.swift in Sources */,
 				ABED4724288C2E260032DDF2 /* AddEditRecipeViewModel.swift in Sources */,
+				AB95939D28957FA400890A60 /* AddEditRecipeViewController+RecipeFormValidationDelegate.swift in Sources */,
 				ABA49D14288AE55100A32D2E /* HomeViewController+UITableViewDataSource.swift in Sources */,
 				AB3D39FF2891DDBF00478B19 /* AddIngredientViewController+UITableViewDataSource.swift in Sources */,
 				ABB843A8288C52D200D57037 /* Ingredient+CoreDataClass.swift in Sources */,
@@ -438,6 +445,7 @@
 				ABB843A3288C4AA800D57037 /* IngredientSelectionViewController+UITableViewDataSource.swift in Sources */,
 				ABED4727288C2EBF0032DDF2 /* HomeViewController+RecipeTableViewCellButtonDelegate.swift in Sources */,
 				AB6F9A9E28909531009D2E93 /* PickerViewTableViewCell.swift in Sources */,
+				AB95939B28957EE500890A60 /* RecipeFormValidationDelegate.swift in Sources */,
 				ABED4729288C31370032DDF2 /* AddEditRecipeViewController+UITableViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
